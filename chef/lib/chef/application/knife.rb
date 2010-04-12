@@ -37,7 +37,8 @@ class Chef::Application::Knife < Chef::Application
     :short => "-c CONFIG",
     :long  => "--config CONFIG",
     :default => File.join(ENV['HOME'], '.chef', 'knife.rb'),
-    :description => "The configuration file to use"
+    :description => "The configuration file to use",
+    :proc        => lambda { |c| File.expand_path(c) }
 
   option :log_level, 
     :short        => "-l LEVEL",

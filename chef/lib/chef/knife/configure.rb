@@ -61,7 +61,7 @@ class Chef
         validation_user = config[:validation_client_name] || ask_question("Your validation client user name? ")
         validation_key = config[:validation_key] || File.join(chef_config_path, "#{validation_user}.pem")
         chef_repo = config[:repository] || ask_question("Path to a chef repository (or leave blank)? ")
-        
+        chef_repo = File.expand_path(chef_repo)
 
         File.open(config[:config_file], "w") do |f|
           f.puts <<EOH
